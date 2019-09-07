@@ -2,10 +2,18 @@
 
 🔨 提供一些实用的 Python 装饰器～
 
+> Torbjorn（即`托比昂`），他是守望先锋里的一个英雄，托比昂有一个强力输出的炮台。
+俗话说`他强任他强，我用托比昂`，我希望本项目也能给你的 Python 代码提供强力的支持！
+
 ## 安装
 
 ```bash
+# pip 安装
 pip install torbjorn
+
+# or 源码安装
+git clone https://github.com/HaveTwoBrush/torbjorn.git
+cd torbjorn && python setup.py install
 ```
 
 ## 使用
