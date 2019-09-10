@@ -1,11 +1,27 @@
+import functools
 from datetime import datetime
 
 
 def run_time(func):
-    def wrapper(*args, **kw):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
         start_time = datetime.now()
-        func(*args, **kw)
+        _return = func(*args, **kwargs)
         end_time = datetime.now()
-        delta_time = end_time - start_time
-        print(f">> function \"{func.__name__}\" cost time: {delta_time}")
+        print(f">> [{func.__name__}] run time: {end_time - start_time}")
+        return _return
+
+    return wrapper
+
+
+def run_count(func):
+    count = 0
+
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        nonlocal count
+        count += 1
+        print(f">> [{func.__name__}] run count: {count}")
+        return func(*args, **kwargs)
+
     return wrapper

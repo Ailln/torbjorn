@@ -18,18 +18,36 @@ cd torbjorn && python setup.py install
 
 ## 使用
 
+- `run_time`: 计算运行时间
+- `run_count`: 计算运行次数
+
 ```python
 import torbjorn as tbn
 
-# run_time 计算函数运行时间
+
 @tbn.run_time
-def calculate_million_numbers():
+@tbn.run_count
+def calculate_million_numbers(num):
     number = 0
-    for i in range(1000000):
+    for _ in range(num):
         number += 1
+
+
+if __name__ == '__main__':
+    for _ in range(5):
+        calculate_million_numbers(1000000)
         
 # output:
-# >> function "calculate_million_numbers" cost time: 0:00:00.059892
+# >> [calculate_million_numbers] run count: 1
+# >> [calculate_million_numbers] run time: 0:00:00.057086
+# >> [calculate_million_numbers] run count: 2
+# >> [calculate_million_numbers] run time: 0:00:00.050949
+# >> [calculate_million_numbers] run count: 3
+# >> [calculate_million_numbers] run time: 0:00:00.050162
+# >> [calculate_million_numbers] run count: 4
+# >> [calculate_million_numbers] run time: 0:00:00.049104
+# >> [calculate_million_numbers] run count: 5
+# >> [calculate_million_numbers] run time: 0:00:00.049974
 ```
 
 ## 许可

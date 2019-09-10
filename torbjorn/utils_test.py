@@ -2,11 +2,13 @@ import torbjorn as tbn
 
 
 @tbn.run_time
-def calculate_million_numbers():
+@tbn.run_count
+def calculate_million_numbers(num):
     number = 0
-    for i in range(1000000):
+    for _ in range(num):
         number += 1
 
 
 if __name__ == '__main__':
-    calculate_million_numbers()
+    for _ in range(5):
+        calculate_million_numbers(1000000)
