@@ -1,19 +1,17 @@
 from setuptools import setup
 from setuptools import find_packages
 
-from torbjorn import version
-
 NAME = "torbjorn"
 AUTHOR = "Ailln"
 EMAIL = "kinggreenhall@gmail.com"
-URL = "https://github.com/HaveTwoBrush/torbjorn"
+URL = "https://github.com/Ailln/torbjorn"
 LICENSE = "MIT License"
 DESCRIPTION = "Provide some practical Python decorators."
 
 if __name__ == "__main__":
     setup(
         name=NAME,
-        version=version.VERSION,
+        version="0.0.4",
         author=AUTHOR,
         author_email=EMAIL,
         url=URL,

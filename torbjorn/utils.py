@@ -1,3 +1,4 @@
+import signal
 import functools
 from datetime import datetime
 
@@ -25,3 +26,25 @@ def run_count(func):
         return func(*args, **kwargs)
 
     return wrapper
+
+
+def ctrl_c(func):
+    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGHUP, signal_handler)
+    signal.signal(signal.SIGTERM, signal_handler)
+
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs)
+
+    return wrapper
+
+
+def signal_handler(_a, _b):
+    while True:
+        exit_flag = input("Are you sure to quit? yes/no\n>> ")
+        if exit_flag == "yes":
+            print(">> exit...")
+            exit()
+        elif exit_flag == "no":
+            break
