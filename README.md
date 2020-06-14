@@ -1,5 +1,7 @@
 # Torbjorn
 
+![Upload Python Package](https://github.com/Ailln/torbjorn/workflows/Upload%20Python%20Package/badge.svg)
+
 🔨 提供一些实用的 Python 装饰器～
 
 `Torbjorn`（即托比昂）是守望先锋游戏中的英雄之一，他拥有一个强力输出的炮台。
