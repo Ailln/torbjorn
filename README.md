@@ -1,14 +1,18 @@
 # Torbjorn
 
+[![Pypi](https://img.shields.io/pypi/v/torbjorn.svg)](https://pypi.org/project/torbjorn/)
+[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/Ailln/torbjorn/blob/master/LICENSE)
+[![stars](https://img.shields.io/github/stars/Ailln/torbjorn.svg)](https://github.com/Ailln/torbjorn/stargazers)
+[![build](https://img.shields.io/github/workflow/status/Ailln/torbjorn/build)](https://github.com/Ailln/torbjorn/actions?query=workflow%3Abuild)
+
 🔨 提供一些实用的 Python 装饰器～
 
 `Torbjorn`（即托比昂）是守望先锋游戏中的英雄之一，他拥有一个强力输出的炮台。
 俗话说「他强任他强，我用托比昂」，我希望本项目也能给你的 Python 代码提供强力的支持！
 
-> ⚠️ v0.0.4 新版本介绍：
+> 🎈️ v0.1.0：
 >
-> 不知道你有没有这样的烦恼，跑了很久的代码，被自己一不小按了 `Ctrl C` 给终止掉了，
-> 重新跑又需要大量的时间，试试 `@tbn.ctrl_c` 吧，交互式的终止验证可以让你摆脱这一烦恼！
+> 为 `run_time` 和 `run_count` 增加参数支持 (logger, name)。
 
 ## 安装
 
@@ -28,11 +32,20 @@ cd torbjorn && python setup.py install
 - `ctrl_c`: 程序终止验证
 
 ```python
+import logging
+
 import torbjorn as tbn
 
 
+logger = logging.getLogger(__name__)
+
+
 @tbn.run_time
+@tbn.run_time(name="test_time")
+@tbn.run_time(logger=logger, name="test_time")
 @tbn.run_count
+@tbn.run_count(name="test_count")
+@tbn.run_count(logger=logger, name="test_count")
 @tbn.ctrl_c
 def calculate_million_numbers(num):
     number = 0
@@ -45,21 +58,29 @@ if __name__ == '__main__':
         calculate_million_numbers(1000000)
         
 # output:
-# >> [calculate_million_numbers] run count: 1
-# >> [calculate_million_numbers] run time: 0:00:00.057086
-# >> [calculate_million_numbers] run count: 2
-# ^CAre you sure to quit? yes/no
+# [calculate_million_numbers] run count: 1
+# [test_count] run count: 1
+# [test_count] run count: 1
+# [test_time] run time: 0.074010
+# [test_time] run time: 0.074463
+# [calculate_million_numbers] run time: 0.074512
+# [calculate_million_numbers] run count: 2
+# [test_count] run count: 2
+# [test_count] run count: 2
+# [test_time] run time: 0.074386
+# [test_time] run time: 0.074522
+# [calculate_million_numbers] run time: 0.074556
+# ^CAre you sure to quit? (yes|y) / (no|n)
 # >> 123
-# Are you sure to quit? yes/no
+# ^CAre you sure to quit? (yes|y) / (no|n)
 # >> no
-# >> [calculate_million_numbers] run time: 0:00:00.100949
-# >> [calculate_million_numbers] run count: 3
-# >> [calculate_million_numbers] run time: 0:00:00.050162
-# >> [calculate_million_numbers] run count: 4
-# >> [calculate_million_numbers] run time: 0:00:00.049104
-# >> [calculate_million_numbers] run count: 5
-# >> [calculate_million_numbers] run time: 0:00:00.049974
-# ^CAre you sure to quit? yes/no
+# [calculate_million_numbers] run count: 3
+# [test_count] run count: 3
+# [test_count] run count: 3
+# [test_time] run time: 0.072722
+# [test_time] run time: 0.072863
+# [calculate_million_numbers] run time: 0.072897
+# ^CAre you sure to quit? (yes|y) / (no|n)
 # >> yes
 # >> exit...
 ```

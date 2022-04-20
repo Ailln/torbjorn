@@ -1,14 +1,11 @@
-from . import shell
-from . import version
-from .utils import run_time
-from .utils import run_count
-from .utils import ctrl_c
+__version__ = "0.1.0"
 
-__version__ = version.VERSION
+from .main import run_time
+from .main import run_count
+from .main import ctrl_c
 
 __all__ = [
-    "shell",
-    "version",
+    "__version__",
     "run_time",
     "run_count",
     "ctrl_c"

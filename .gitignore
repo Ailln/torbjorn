@@ -111,3 +111,5 @@ files.txt
 
 # vscode
 .vscode
+
+.DS_Store
