@@ -10,9 +10,9 @@
 `Torbjorn`（即托比昂）是守望先锋游戏中的英雄之一，他拥有一个强力输出的炮台。
 俗话说「他强任他强，我用托比昂」，我希望本项目也能给你的 Python 代码提供强力的支持！
 
-> 🎈️ v0.1.0：
+> 🎈️ v0.1.1：
 >
-> 为 `run_time` 和 `run_count` 增加参数支持 (logger, name)。
+> 使用 `time.perf_counter` 计算时间，以提高精准度。
 
 ## 安装
 
@@ -58,28 +58,28 @@ if __name__ == '__main__':
         calculate_million_numbers(1000000)
         
 # output:
-# [calculate_million_numbers] run count: 1
-# [test_count] run count: 1
-# [test_count] run count: 1
-# [test_time] run time: 0.074010
-# [test_time] run time: 0.074463
-# [calculate_million_numbers] run time: 0.074512
-# [calculate_million_numbers] run count: 2
-# [test_count] run count: 2
-# [test_count] run count: 2
-# [test_time] run time: 0.074386
-# [test_time] run time: 0.074522
-# [calculate_million_numbers] run time: 0.074556
+# [calculate_million_numbers] run count(t): 1
+# [test_count] run count(t): 1
+# [test_count] run count(t): 1
+# [test_time] run time(s): 0.074010
+# [test_time] run time(s): 0.074463
+# [calculate_million_numbers] run time(s): 0.074512
+# [calculate_million_numbers] run count(t): 2
+# [test_count] run count(t): 2
+# [test_count] run count(t): 2
+# [test_time] run time(s): 0.074386
+# [test_time] run time(s): 0.074522
+# [calculate_million_numbers] run time(s): 0.074556
 # ^CAre you sure to quit? (yes|y) / (no|n)
 # >> 123
 # ^CAre you sure to quit? (yes|y) / (no|n)
 # >> no
-# [calculate_million_numbers] run count: 3
-# [test_count] run count: 3
-# [test_count] run count: 3
-# [test_time] run time: 0.072722
-# [test_time] run time: 0.072863
-# [calculate_million_numbers] run time: 0.072897
+# [calculate_million_numbers] run count(t): 3
+# [test_count] run count(t): 3
+# [test_count] run count(t): 3
+# [test_time] run time(s): 0.072722
+# [test_time] run time(s): 0.072863
+# [calculate_million_numbers] run time(s): 0.072897
 # ^CAre you sure to quit? (yes|y) / (no|n)
 # >> yes
 # >> exit...

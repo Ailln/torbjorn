@@ -12,6 +12,7 @@ DESCRIPTION = "Provide some practical Python decorators."
 if sys.version_info < (3, 6, 0):
     raise RuntimeError(f"{NAME} requires Python >=3.6.0, but yours is {sys.version}!")
 
+__version__ = ""
 try:
     lib_py = os.path.join(NAME, "__init__.py")
     with open(lib_py, "r", encoding="utf8") as f_v:

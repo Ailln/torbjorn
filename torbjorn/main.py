@@ -1,6 +1,6 @@
 import signal
 from logging import getLogger
-from datetime import datetime
+from time import perf_counter
 from functools import wraps, partial
 
 
@@ -16,29 +16,29 @@ def run_time(func=None, *, logger=default_logger, name=None):
 
     @wraps(func)
     def wrapper(*args, **kwargs):
-        start_time = datetime.now()
+        start_time = perf_counter()
         _return = func(*args, **kwargs)
-        end_time = datetime.now()
-        cost_time = (end_time - start_time).total_seconds()
-        logger.warning(f"[{name}] run time: {cost_time}")
+        cost_time = round(perf_counter() - start_time, 5)
+        logger.warning(f"[{name}] run time(s): {cost_time}")
         return _return
 
     return wrapper
 
 
 def run_count(func=None, *, logger=default_logger, name=None):
-    count = 0
     if func is None:
         return partial(run_count, logger=logger, name=name)
 
     if name is None:
         name = func.__name__
 
+    count = 0
+
     @wraps(func)
     def wrapper(*args, **kwargs):
         nonlocal count
         count += 1
-        logger.warning(f"[{name}] run count: {count}")
+        logger.warning(f"[{name}] run count(t): {count}")
         return func(*args, **kwargs)
     return wrapper
 
